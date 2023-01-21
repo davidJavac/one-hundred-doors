@@ -16,6 +16,6 @@ public class DoorVisitorTest {
 
         doorVisitor.visit();
 
-        Assertions.assertEquals(OPEN.name(), door.state());
+        Assertions.assertEquals(openState, door.state());
     }
 }
