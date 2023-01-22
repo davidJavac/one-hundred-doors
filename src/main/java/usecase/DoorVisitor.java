@@ -12,7 +12,15 @@ public class DoorVisitor {
         this.doors = doors;
     }
 
-    public void visit(Door door) {
+    public Door[] execute() {
+        for (Door door : doors) {
+            visit(door);
+        }
+
+        return doors.toArray(Door[]::new);
+    }
+
+    private void visit(Door door) {
         door.toggle();
     }
 }

@@ -4,23 +4,38 @@ import org.junit.jupiter.api.Test;
 import usecase.DoorVisitor;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static enums.DoorStatus.CLOSED;
-import static enums.DoorStatus.OPEN;
 
 public class DoorVisitorTest {
 
     @Test
-    public void test_when_visiting_a_list_of_doors_then_should_be_toggled() {
-        Door firstDoor = new Door(CLOSED.name());
-        Door secondDoor = new Door(CLOSED.name());
-        DoorVisitor doorVisitor = new DoorVisitor(Arrays.asList(firstDoor, secondDoor));
-        String openState = OPEN.name();
+    public void test_when_execute_then_doors_should_be_toggled() {
+        DoorVisitor doorVisitor = new DoorVisitor(buildListOfDoors());
 
-        doorVisitor.visit(firstDoor);
-        doorVisitor.visit(secondDoor);
+        Door[] result = doorVisitor.execute();
 
-        Assertions.assertEquals(openState, firstDoor.state());
-        Assertions.assertEquals(openState, secondDoor.state());
+        Assertions.assertTrue(wereAllDoorsToggled(result));
+    }
+
+    @Test
+    public void test_when_execute_then_should_return_an_array_of_doors() {
+        DoorVisitor doorVisitor = new DoorVisitor(buildListOfDoors());
+
+        Door[] result = doorVisitor.execute();
+
+        Assertions.assertEquals(3, result.length);
+    }
+
+    private List<Door> buildListOfDoors() {
+        Door firstDoor = new Door(1, CLOSED.name());
+        Door secondDoor = new Door(2, CLOSED.name());
+        Door thirdDoor = new Door(3, CLOSED.name());
+        return Arrays.asList(firstDoor, secondDoor, thirdDoor);
+    }
+
+    private Boolean wereAllDoorsToggled(Door [] doors) {
+        return Arrays.stream(doors).allMatch(door -> door.wasToggled());
     }
 }
