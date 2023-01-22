@@ -5,8 +5,10 @@ import usecase.DoorVisitor;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static enums.DoorStatus.CLOSED;
+import static enums.DoorStatus.OPEN;
 
 public class DoorVisitorTest {
 
@@ -25,14 +27,28 @@ public class DoorVisitorTest {
 
         Door[] result = doorVisitor.execute();
 
-        Assertions.assertEquals(3, result.length);
+        Assertions.assertTrue(result.length > 0);
+    }
+
+    @Test
+    public void test_when_execute_then_interval_of_visit_should_increment_by_one() {
+        DoorVisitor doorVisitor = new DoorVisitor(buildListOfDoors());
+
+        String expectedOpenState = OPEN.name();
+        String expectedClosedState = CLOSED.name();
+
+        Door[] result = doorVisitor.execute();
+
+        Assertions.assertEquals(expectedOpenState, result[0].state());
+        Assertions.assertEquals(expectedClosedState, result[1].state());
+        Assertions.assertEquals(expectedClosedState, result[2].state());
+        Assertions.assertEquals(expectedOpenState, result[3].state());
+        Assertions.assertEquals(expectedOpenState, result[99].state());
     }
 
     private List<Door> buildListOfDoors() {
-        Door firstDoor = new Door(1, CLOSED.name());
-        Door secondDoor = new Door(2, CLOSED.name());
-        Door thirdDoor = new Door(3, CLOSED.name());
-        return Arrays.asList(firstDoor, secondDoor, thirdDoor);
+        IntStream oneHundredDoorsNumbers = IntStream.range(1, 101);
+        return oneHundredDoorsNumbers.mapToObj(n -> new Door(n, CLOSED.name())).toList();
     }
 
     private Boolean wereAllDoorsToggled(Door [] doors) {
