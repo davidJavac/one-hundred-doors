@@ -76,9 +76,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DoorVisitorTest.test_when_visiting_a_list_of_doors_then_should_be_toggled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="one-hundred-doors-practice" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DoorVisitorTest" />
+      <option name="METHOD_NAME" value="test_when_visiting_a_list_of_doors_then_should_be_toggled" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.DoorVisitorTest" />
+        <item itemvalue="JUnit.DoorVisitorTest.test_when_visiting_a_list_of_doors_then_should_be_toggled" />
         <item itemvalue="JUnit.DoorVisitorTest.test_when_visiting_a_door_then_should_be_toggled" />
         <item itemvalue="JUnit.DoorTest.test_when_a_door_is_toggled_then_should_inverse_its_state" />
       </list>

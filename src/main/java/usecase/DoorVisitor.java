@@ -2,15 +2,17 @@ package usecase;
 
 import entity.Door;
 
+import java.util.List;
+
 public class DoorVisitor {
 
-    private Door door;
+    private List<Door> doors;
 
-    public DoorVisitor(Door door) {
-        this.door = door;
+    public DoorVisitor(List<Door> doors) {
+        this.doors = doors;
     }
 
-    public void visit() {
-        this.door.toggle();
+    public void visit(Door door) {
+        door.toggle();
     }
 }
