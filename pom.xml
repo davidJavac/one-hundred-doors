@@ -14,7 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.1</junit.version>
         <mockito.version>4.10.0</mockito.version>
-        <lombok.version>4.10.0</lombok.version>
     </properties>
     <dependencies>
         <dependency>
