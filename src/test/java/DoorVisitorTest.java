@@ -1,14 +1,14 @@
-import entity.Door;
+import org.example.core.entity.Door;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import usecase.DoorVisitor;
+import org.example.core.usecase.DoorVisitor;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static enums.DoorStatus.CLOSED;
-import static enums.DoorStatus.OPEN;
+import static org.example.core.enums.DoorStatus.CLOSED;
+import static org.example.core.enums.DoorStatus.OPEN;
 
 public class DoorVisitorTest {
 

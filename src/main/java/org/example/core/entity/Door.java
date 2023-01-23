@@ -1,7 +1,7 @@
-package entity;
+package org.example.core.entity;
 
-import static enums.DoorStatus.OPEN;
-import static enums.DoorStatus.CLOSED;
+import static org.example.core.enums.DoorStatus.OPEN;
+import static org.example.core.enums.DoorStatus.CLOSED;
 
 public class Door {
 

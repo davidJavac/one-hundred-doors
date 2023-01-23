@@ -1,6 +1,6 @@
-package usecase;
+package org.example.core.usecase;
 
-import entity.Door;
+import org.example.core.entity.Door;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class DoorVisitor {
             visit(doors.get(i));
         }
     }
-    
+
     private void incrementIntervalBy(Integer number) {
         interval += number;
     }
