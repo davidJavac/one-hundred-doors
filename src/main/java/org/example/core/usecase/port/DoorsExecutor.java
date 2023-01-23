@@ -1,11 +1,9 @@
 package org.example.core.usecase.port;
 
-import org.example.core.entity.Door;
-
-import java.util.List;
+import org.example.core.usecase.port.dto.InputDto;
 
 @FunctionalInterface
 public interface DoorsExecutor {
 
-    void execute(List<Door> doors);
+    void execute(InputDto inputDto);
 }

@@ -1,9 +1,9 @@
 package org.example.core.usecase.port;
 
-import org.example.core.entity.Door;
+import org.example.core.usecase.port.dto.OutputDto;
 
 @FunctionalInterface
 public interface Reporter {
 
-    void result(Door[] doors);
+    void result(OutputDto outputDto);
 }
