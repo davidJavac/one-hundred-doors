@@ -1,16 +1,14 @@
 package org.example.core.usecase.port.dto;
 
-import java.util.List;
-
 public class OutputDto {
 
-    private List<DoorDto> doors;
+    private DoorDto doors [];
 
-    public OutputDto(List<DoorDto> doors) {
+    public OutputDto(DoorDto doors []) {
         this.doors = doors;
     }
 
-    public List<DoorDto> getDoors() {
+    public DoorDto [] getDoors() {
         return this.doors;
     }
 }
