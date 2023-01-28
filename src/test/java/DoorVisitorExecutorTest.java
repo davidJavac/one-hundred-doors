@@ -46,6 +46,6 @@ public class DoorVisitorExecutorTest {
 
     private Door [] buildArrayOfDoors() {
         IntStream oneHundredDoorsNumbers = IntStream.range(1, 101);
-        return oneHundredDoorsNumbers.mapToObj(n -> Door.createDoor(n)).toArray(Door[]::new);
+        return oneHundredDoorsNumbers.mapToObj(n -> Door.createWithNumber(n)).toArray(Door[]::new);
     }
 }

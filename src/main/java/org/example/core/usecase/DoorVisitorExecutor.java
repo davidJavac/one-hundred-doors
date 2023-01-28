@@ -29,7 +29,7 @@ public class DoorVisitorExecutor implements DoorsExecutor {
 
     private List<Door> buildListOfInputDoors(Integer doorsQuantity) {
         IntStream doorNumbers = IntStream.range(1, doorsQuantity + 1);
-        return doorNumbers.mapToObj(n -> Door.createDoor(n)).toList();
+        return doorNumbers.mapToObj(n -> Door.createWithNumber(n)).toList();
     }
 
     private DoorDto [] mapToDoorDto(Door [] visitedDoors) {

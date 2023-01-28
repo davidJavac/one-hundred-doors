@@ -14,7 +14,7 @@ public class Door {
         this.state = state;
     }
 
-    public static Door createDoor(Integer number) {
+    public static Door createWithNumber(Integer number) {
         return new Door(number, CLOSED.name());
     }
 
