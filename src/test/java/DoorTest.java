@@ -11,7 +11,7 @@ public class DoorTest {
     public void test_when_a_door_is_toggled_then_should_inverse_its_state() {
         String openState = OPEN.name();
         String closedState = CLOSED.name();
-        Door door = new Door(1, closedState);
+        Door door = Door.createWithNumber(1);
 
         door.toggle();
         Assertions.assertEquals(openState, door.state());
@@ -21,7 +21,7 @@ public class DoorTest {
 
     @Test
     public void test_when_toggle_is_invoked_then_was_toggled_should_be_true() {
-        Door door = new Door(1, CLOSED.name());
+        Door door = Door.createWithNumber(1);
 
         door.toggle();
 

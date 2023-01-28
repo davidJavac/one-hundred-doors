@@ -5,24 +5,21 @@ import org.example.core.entity.Door;
 import java.util.List;
 
 public class DoorVisitor {
-
-    private List<Door> doors;
     private Integer interval;
 
-    public DoorVisitor(List<Door> doors) {
-        this.doors = doors;
+    public DoorVisitor() {
         this.interval = 1;
     }
 
-    public Door[] execute() {
+    public Door[] execute(List<Door> doors) {
         while(interval <= doors.size()) {
-            visitAllDoorsByInterval();
+            visitAllDoorsByInterval(doors);
             incrementIntervalBy(1);
         }
         return doors.toArray(Door[]::new);
     }
 
-    private void visitAllDoorsByInterval() {
+    private void visitAllDoorsByInterval(List<Door> doors) {
         for (int i = interval - 1; i < doors.size(); i += interval) {
             visit(doors.get(i));
         }
