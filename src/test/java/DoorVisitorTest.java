@@ -49,7 +49,7 @@ public class DoorVisitorTest {
 
     private List<Door> buildListOfDoors() {
         IntStream oneHundredDoorsNumbers = IntStream.range(1, 101);
-        return oneHundredDoorsNumbers.mapToObj(n -> new Door(n, CLOSED.name())).toList();
+        return oneHundredDoorsNumbers.mapToObj(n -> Door.createDoor(n)).toList();
     }
 
     private Boolean wereAllDoorsToggled(Door [] doors) {

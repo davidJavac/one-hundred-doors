@@ -11,8 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.example.core.enums.DoorStatus.CLOSED;
-
 public class DoorVisitorExecutor implements DoorsExecutor {
 
     private DoorVisitor doorVisitor;
@@ -31,7 +29,7 @@ public class DoorVisitorExecutor implements DoorsExecutor {
 
     private List<Door> buildListOfInputDoors(Integer doorsQuantity) {
         IntStream doorNumbers = IntStream.range(1, doorsQuantity + 1);
-        return doorNumbers.mapToObj(n -> new Door(n, CLOSED.name())).toList();
+        return doorNumbers.mapToObj(n -> Door.createDoor(n)).toList();
     }
 
     private DoorDto [] mapToDoorDto(Door [] visitedDoors) {

@@ -9,9 +9,13 @@ public class Door {
     private Integer number;
     private Boolean wasToggled;
 
-    public Door(Integer number, String state) {
+    private Door(Integer number, String state) {
         this.number = number;
         this.state = state;
+    }
+
+    public static Door createDoor(Integer number) {
+        return new Door(number, CLOSED.name());
     }
 
     private void open() {

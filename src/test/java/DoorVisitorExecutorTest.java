@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
-import static org.example.core.enums.DoorStatus.CLOSED;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -47,6 +46,6 @@ public class DoorVisitorExecutorTest {
 
     private Door [] buildArrayOfDoors() {
         IntStream oneHundredDoorsNumbers = IntStream.range(1, 101);
-        return oneHundredDoorsNumbers.mapToObj(n -> new Door(n, CLOSED.name())).toArray(Door[]::new);
+        return oneHundredDoorsNumbers.mapToObj(n -> Door.createDoor(n)).toArray(Door[]::new);
     }
 }
