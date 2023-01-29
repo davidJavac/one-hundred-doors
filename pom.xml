@@ -13,12 +13,16 @@
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.9.1</junit.version>
+        <jupiter-engine.version>5.4.0</jupiter-engine.version>
         <mockito.version>4.10.0</mockito.version>
+        <maven.jar.plugin>3.3.0</maven.jar.plugin>
+        <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
+        <maven.surefire.plugin>2.22.2</maven.surefire.plugin>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -33,7 +37,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>${maven.compiler.plugin}</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <source>17</source>
@@ -44,7 +48,7 @@
                 <!-- Build an executable JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>${maven.jar.plugin}</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -52,6 +56,11 @@
                         </manifest>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin}</version>
             </plugin>
         </plugins>
     </build>
