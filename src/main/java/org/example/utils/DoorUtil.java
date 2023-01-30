@@ -4,16 +4,29 @@ import org.example.core.entity.Door;
 import org.example.core.usecase.port.dto.DoorDto;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class DoorUtil {
 
-    private static Door[] buildArrayOfDoors(Integer limit) {
-        IntStream oneHundredDoorsNumbers = IntStream.range(1, limit + 1);
-        return oneHundredDoorsNumbers.mapToObj(n -> Door.createWithNumber(n)).toArray(Door[]::new);
+    public static Door[] buildArrayOfDoors(Integer doorsQuantity) {
+        return mapToStreamDoor(rangeDoorNumbers(doorsQuantity)).toArray(Door[]::new);
     }
 
-    private static DoorDto[] mapToDoorDto(Door [] doors) {
+    public static List<Door> buildListOfDoors(Integer doorsQuantity) {
+        return mapToStreamDoor(rangeDoorNumbers(doorsQuantity)).toList();
+    }
+
+    private static IntStream rangeDoorNumbers(Integer doorsQuantity) {
+        return IntStream.range(1, doorsQuantity + 1);
+    }
+
+    private static Stream<Door> mapToStreamDoor(IntStream doorNumbers) {
+        return doorNumbers.mapToObj(n -> Door.createWithNumber(n));
+    }
+
+    public static DoorDto[] mapToArrayOfDoorDto(Door [] doors) {
         return Arrays.stream(doors).map(d -> new DoorDto(d)).toArray(DoorDto[]::new);
     }
 }

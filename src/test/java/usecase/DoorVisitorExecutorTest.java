@@ -1,6 +1,5 @@
 package usecase;
 
-import org.example.core.entity.Door;
 import org.example.core.usecase.DoorVisitor;
 import org.example.core.usecase.DoorVisitorExecutor;
 import org.example.core.usecase.port.DoorsExecutor;
@@ -9,8 +8,7 @@ import org.example.core.usecase.port.dto.InputDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.stream.IntStream;
-
+import static org.example.utils.DoorUtil.buildArrayOfDoors;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -23,7 +21,7 @@ public class DoorVisitorExecutorTest {
     @BeforeEach
     public void setUp() {
         this.doorVisitor = mock(DoorVisitor.class);
-        when(doorVisitor.execute(any())).thenReturn(buildArrayOfDoors());
+        when(doorVisitor.execute(any())).thenReturn(buildArrayOfDoors(100));
         this.reporter = mock(Reporter.class);
         this.doorsExecutor = new DoorVisitorExecutor(doorVisitor, reporter);
     }
@@ -46,8 +44,4 @@ public class DoorVisitorExecutorTest {
         return new InputDto(100);
     }
 
-    private Door [] buildArrayOfDoors() {
-        IntStream oneHundredDoorsNumbers = IntStream.range(1, 101);
-        return oneHundredDoorsNumbers.mapToObj(n -> Door.createWithNumber(n)).toArray(Door[]::new);
-    }
 }
