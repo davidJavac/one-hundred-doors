@@ -1,3 +1,5 @@
+package usecase;
+
 import org.example.core.entity.Door;
 import org.example.core.usecase.DoorVisitor;
 import org.example.core.usecase.DoorVisitorExecutor;
