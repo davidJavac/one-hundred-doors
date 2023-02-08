@@ -5,6 +5,7 @@ import org.example.core.usecase.port.dto.DoorDto;
 import org.example.core.usecase.port.dto.OutputDto;
 
 public class ConsoleReporter implements Reporter {
+    
     @Override
     public void result(OutputDto outputDto) {
         System.out.println("door_number state");
