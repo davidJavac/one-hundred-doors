@@ -1,3 +1,5 @@
+package entity;
+
 import org.example.core.entity.Door;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
