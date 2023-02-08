@@ -18,15 +18,15 @@ public class DoorUtil {
         return mapToStreamDoor(rangeDoorNumbers(doorsQuantity)).toList();
     }
 
+    public static DoorDto[] mapToArrayOfDoorDto(Door [] doors) {
+        return Arrays.stream(doors).map(d -> new DoorDto(d)).toArray(DoorDto[]::new);
+    }
+
     private static IntStream rangeDoorNumbers(Integer doorsQuantity) {
         return IntStream.range(1, doorsQuantity + 1);
     }
 
     private static Stream<Door> mapToStreamDoor(IntStream doorNumbers) {
         return doorNumbers.mapToObj(n -> Door.createWithNumber(n));
-    }
-
-    public static DoorDto[] mapToArrayOfDoorDto(Door [] doors) {
-        return Arrays.stream(doors).map(d -> new DoorDto(d)).toArray(DoorDto[]::new);
     }
 }

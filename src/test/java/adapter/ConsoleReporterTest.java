@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.example.core.enums.DoorStatus.CLOSED;
 import static org.example.utils.DoorUtil.buildArrayOfDoors;
 import static org.example.utils.DoorUtil.mapToArrayOfDoorDto;
 
@@ -25,16 +26,34 @@ public class ConsoleReporterTest {
 
     @Test
     public void test_when_execute_console_reporter_then_should_print_headers() {
-        String expectedHeaders = "door_number state";
+        String expectedNumberHeader = "door_number";
+        String expectedStateHeader = "state";
 
         Reporter reporter = new ConsoleReporter();
         reporter.result(new OutputDto(mapToArrayOfDoorDto(buildArrayOfDoors(100))));
 
-        Assertions.assertEquals(expectedHeaders, outputStream.toString().trim());
+        Assertions.assertEquals(expectedNumberHeader, valueByCell(0, 0));
+        Assertions.assertEquals(expectedStateHeader, valueByCell(0, 1));
+    }
+
+    @Test
+    public void test_when_execute_console_reporter_then_should_print_number_of_the_door_and_its_state() {
+        String expectedNumber = "1";
+        String expectedState = CLOSED.name();
+
+        Reporter reporter = new ConsoleReporter();
+        reporter.result(new OutputDto(mapToArrayOfDoorDto(buildArrayOfDoors(1))));
+
+        Assertions.assertEquals(expectedNumber, valueByCell(1, 0));
+        Assertions.assertEquals(expectedState, valueByCell(1, 1));
     }
 
     @AfterEach
     public void restoreStream() {
         System.setOut(System.out);
+    }
+
+    private String valueByCell(Integer row, Integer column) {
+        return outputStream.toString().split("\\r?\\n")[row].split(" ")[column];
     }
 }
