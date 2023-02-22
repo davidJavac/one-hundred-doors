@@ -20,6 +20,6 @@ public class DoorConsoleController {
         String doorsAmount = scan.nextLine();
         scan.close();
 
-        doorsExecutor.execute(new InputDto(Integer.valueOf(doorsAmount)));
+        doorsExecutor.execute(new InputDto(doorsAmount));
     }
 }

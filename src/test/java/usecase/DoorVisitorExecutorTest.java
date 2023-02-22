@@ -41,7 +41,7 @@ public class DoorVisitorExecutorTest {
     }
 
     private InputDto buildInputDto() {
-        return new InputDto(100);
+        return new InputDto("100");
     }
 
 }
