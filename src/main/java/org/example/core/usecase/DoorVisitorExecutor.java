@@ -1,5 +1,6 @@
 package org.example.core.usecase;
 
+import com.google.inject.Inject;
 import org.example.core.entity.Door;
 import org.example.core.usecase.port.DoorsExecutor;
 import org.example.core.usecase.port.Reporter;
@@ -14,6 +15,9 @@ public class DoorVisitorExecutor implements DoorsExecutor {
     private DoorVisitor doorVisitor;
     private Reporter reporter;
 
+    public DoorVisitorExecutor () {}
+
+    @Inject
     public DoorVisitorExecutor(DoorVisitor doorVisitor, Reporter reporter) {
         this.doorVisitor = doorVisitor;
         this.reporter = reporter;
