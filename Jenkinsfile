@@ -27,11 +27,10 @@ pipeline {
             steps {
                 sh "mvn verify"
                 publishHTML (target: [
-                       reportDir: 'target/site/jacoco',
+                       reportDir: 'target',
                        reportFiles: 'index.html',
                        reportName: "JaCoCo Report"
                   ])
-                sh "mvn jacoco:report"
             }
         }
     }
