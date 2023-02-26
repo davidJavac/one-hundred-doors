@@ -1,5 +1,6 @@
 package org.example.adapter.controller;
 
+import com.google.inject.Inject;
 import org.example.core.usecase.port.DoorsExecutor;
 import org.example.core.usecase.port.dto.InputDto;
 
@@ -9,6 +10,7 @@ public class DoorConsoleController {
 
     private DoorsExecutor doorsExecutor;
 
+    @Inject
     public DoorConsoleController (DoorsExecutor doorsExecutor) {
         this.doorsExecutor = doorsExecutor;
     }
