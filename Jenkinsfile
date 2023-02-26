@@ -25,7 +25,7 @@ pipeline {
 
         stage("Code coverage") {
             steps {
-                sh "mvn jacoco:check"
+                sh "mvn verify"
                 publishHTML (target: [
                        reportDir: 'target/site/jacoco',
                        reportFiles: 'index.html',
