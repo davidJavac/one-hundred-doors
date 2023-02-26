@@ -29,11 +29,13 @@ pipeline {
             }
 
             post {
-                publishHTML (target: [
-                   reportDir: 'target/site/jacoco',
-                   reportFiles: 'index.html',
-                   reportName: "JaCoCo Report"
-                ])
+                always {
+                    publishHTML (target: [
+                       reportDir: 'target/site/jacoco',
+                       reportFiles: 'index.html',
+                       reportName: "JaCoCo Report"
+                    ])
+                }
             }
         }
     }
