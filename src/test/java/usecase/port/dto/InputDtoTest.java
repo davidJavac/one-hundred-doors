@@ -21,6 +21,11 @@ public class InputDtoTest {
     }
 
     @Test
+    public void then_when_door_quantity_is_empty_then_should_throw_an_exception() {
+        assertThrowOfTask(NullDoorQuantityException.class, () -> new InputDto(""), "quantity field must not be null");
+    }
+
+    @Test
     public void then_when_door_quantity_is_not_a_number_then_should_throw_an_exception() {
         assertThrowOfTask(NonNumberDoorQuantityException.class, () -> new InputDto("not a number"), "quantity field must be a number");
     }
