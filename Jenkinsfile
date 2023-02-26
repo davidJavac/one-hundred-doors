@@ -27,7 +27,6 @@ pipeline {
             steps {
                 sh "mvn verify"
                 publishHTML (target: [
-                       reportDir: 'target',
                        reportFiles: 'index.html',
                        reportName: "JaCoCo Report"
                   ])
