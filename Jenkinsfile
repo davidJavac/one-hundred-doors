@@ -40,7 +40,9 @@ pipeline {
         }
 
         stage("Static code analysis") {
-            sh "mvn checkstyle:checkstyle"
+            steps {
+                sh "mvn checkstyle:checkstyle"
+            }
         }
     }
 }
