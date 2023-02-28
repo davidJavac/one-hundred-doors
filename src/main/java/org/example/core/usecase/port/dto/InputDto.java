@@ -11,8 +11,8 @@ public class InputDto {
 
     private String inputDoorQuantity;
     private Integer doorQuantity;
-    private Integer FLOOR_LIMIT = 0;
-    private Integer CEIL_LIMIT = 1000;
+    private static final Integer FLOOR_LIMIT = 0;
+    private static final Integer CEIL_LIMIT = 1000;
 
     public InputDto(String inputDoorQuantity) {
         this.inputDoorQuantity = inputDoorQuantity;
