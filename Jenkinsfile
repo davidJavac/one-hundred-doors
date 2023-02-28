@@ -38,5 +38,9 @@ pipeline {
                 }
             }
         }
+
+        stage("Static code analysis") {
+            sh "mvn checkstyle:checkstyle"
+        }
     }
 }
