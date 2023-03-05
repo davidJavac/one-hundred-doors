@@ -1,0 +1,24 @@
+name: Build and Deploy
+
+on:
+  pull_request:
+    branches:
+      - '*'
+    types:
+      - opened
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Trigger Jenkins Build
+      uses: appleboy/jenkins-action@master
+      with:
+        url: 'http://3.134.82.40:8080'
+        user: 'ec2-user3'
+        job: 'one-hundred-doors-pipeline'
+        wait_time: '10'
