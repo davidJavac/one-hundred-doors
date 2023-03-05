@@ -13,9 +13,9 @@
         <jacoco.version>0.8.7</jacoco.version>
         <junit.version>5.9.1</junit.version>
         <jupiter-engine.version>5.4.0</jupiter-engine.version>
+        <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
         <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
         <maven.jar.plugin>3.3.0</maven.jar.plugin>
         <maven.surefire.plugin>2.22.2</maven.surefire.plugin>
