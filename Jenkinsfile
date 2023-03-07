@@ -8,6 +8,7 @@ pipeline {
         stage("Checkout") {
                steps {
                     withEnv(['CHANGE_BRANCH=$.pull_request.head.ref']) {
+                      sh 'echo $CHANGE_BRANCH'
                       git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                     }
                }
