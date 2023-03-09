@@ -13,7 +13,7 @@ pipeline {
                         def payload = jsonSlurper.parseText(requestBody)
                         def pullRequestHeadRef = payload.pull_request.head.ref
 
-                        echo "variable pullRequestHeadRef ${pullRequestHeadRef}"
+                        echo "pullRequestHeadRef ${pullRequestHeadRef}"
                         withEnv(["CHANGE_BRANCH=${pullRequestHeadRef}"]) {
                           git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                         }
