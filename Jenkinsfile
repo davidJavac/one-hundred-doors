@@ -10,7 +10,6 @@ pipeline {
                     script {
                       git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                     }
-
                }
           }
 
