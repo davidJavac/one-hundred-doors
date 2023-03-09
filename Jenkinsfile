@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage("Checkout") {
                steps {
-                    git url: 'https://github.com/davidJavac/one-hundred-doors.git', branch: 'master'
+                    script {
+                      git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
+                    }
                }
           }
 
