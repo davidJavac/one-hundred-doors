@@ -8,15 +8,7 @@ pipeline {
         stage("Checkout") {
                steps {
                     script {
-                        def requestBody = env.REQUEST_BODY
-                        def jsonSlurper = new groovy.json.JsonSlurperClassic()
-                        def payload = jsonSlurper.parseText(requestBody)
-                        def pullRequestHeadRef = payload.pull_request.head.ref
-
-                        echo "pullRequestHeadRef ${pullRequestHeadRef}"
-                        withEnv(["CHANGE_BRANCH=${pullRequestHeadRef}"]) {
-                          git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
-                        }
+                      git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                     }
 
                }
