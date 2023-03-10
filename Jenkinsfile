@@ -11,6 +11,7 @@ pipeline {
         stage("Checkout") {
                steps {
                   script {
+                      echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
                       if (env.ACTION == "closed" && env.MERGED == true) {
                           BRANCH = env.BASE_BRANCH
                       }
