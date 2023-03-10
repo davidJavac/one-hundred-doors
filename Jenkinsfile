@@ -18,6 +18,7 @@ pipeline {
                       else {
                           BRANCH = env.CHANGE_BRANCH
                       }
+                      echo "branch env ${env.BRANCH}"
                       git branch: "${env.BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                   }
 
