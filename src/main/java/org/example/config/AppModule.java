@@ -11,7 +11,6 @@ public class AppModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(Reporter.class).to(ConsoleReporter.class);
-        
         bind(DoorsExecutor.class).to(DoorVisitorExecutor.class);
     }
 }
