@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        BRANCH = ''
+       def BRANCH = ''
     }
     tools {
         jdk 'jdk 17'
