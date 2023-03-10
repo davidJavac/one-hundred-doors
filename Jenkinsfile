@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-       def BRANCH = ''
-    }
     tools {
         jdk 'jdk 17'
         maven 'maven 3.9.0'
