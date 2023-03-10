@@ -13,10 +13,10 @@ pipeline {
                   script {
                       echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
                       if (env.ACTION == "closed" && env.MERGED == true) {
-                          BRANCH = env.BASE_BRANCH
+                          env.BRANCH = env.BASE_BRANCH
                       }
                       else {
-                          BRANCH = env.CHANGE_BRANCH
+                          env.BRANCH = env.CHANGE_BRANCH
                       }
                       echo "branch env ${env.BRANCH}"
                       git branch: "${env.BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
