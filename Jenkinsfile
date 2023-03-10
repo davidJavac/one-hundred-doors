@@ -7,9 +7,18 @@ pipeline {
     stages {
         stage("Checkout") {
                steps {
-                    script {
-                      git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
-                    }
+                  script {
+                      echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
+                      if (env.ACTION == "closed" && env.MERGED == true) {
+                          env.BRANCH = env.BASE_BRANCH
+                      }
+                      else {
+                          env.BRANCH = env.CHANGE_BRANCH
+                      }
+                      echo "branch env ${env.BRANCH}"
+                      git branch: "${env.BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
+                  }
+
                }
           }
 
