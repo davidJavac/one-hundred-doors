@@ -10,13 +10,16 @@ pipeline {
     stages {
         stage("Checkout") {
                steps {
-                  if (env.ACTION == "closed" && env.MERGED == true) {
-                        BRANCH = env.BASE_BRANCH
+                  script {
+                      if (env.ACTION == "closed" && env.MERGED == true) {
+                          BRANCH = env.BASE_BRANCH
+                      }
+                      else {
+                          BRANCH = env.CHANGE_BRANCH
+                      }
+                      git branch: "${env.BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                   }
-                  else {
-                        BRANCH = env.CHANGE_BRANCH
-                  }
-                  git branch: "${env.BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
+
                }
           }
 
