@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        BRANCH = ''
+    }
     tools {
         jdk 'jdk 17'
         maven 'maven 3.9.0'
@@ -7,9 +10,13 @@ pipeline {
     stages {
         stage("Checkout") {
                steps {
-                    script {
-                      git branch: "${env.CHANGE_BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
-                    }
+                  if (${env.ACTION == "closed" && ${env.MERGED} == true}) {
+                        BRANCH = ${env.BASE_BRANCH}
+                  }
+                  else {
+                        BRANCH = ${env.CHANGE_BRANCH}
+                  }
+                  git branch: "${env.BRANCH}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                }
           }
 
