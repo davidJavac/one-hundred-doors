@@ -18,6 +18,7 @@ pipeline {
                           branch = env.CHANGE_BRANCH
                       }
                       echo "branch variable ${branch}"
+                      
                       git branch: "${branch}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
                   }
 
