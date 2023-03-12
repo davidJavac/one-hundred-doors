@@ -11,7 +11,7 @@ pipeline {
                       echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
                       echo "action ${env.ACTION}, merged ${env.MERGED}"
                       def branch = ''
-                      if (env.ACTION == "closed" && env.MERGED == true) {
+                      if (env.ACTION == "closed" && env.MERGED == "true") {
                           branch = env.BASE_BRANCH
                       }
                       else {
