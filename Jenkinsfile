@@ -69,6 +69,7 @@ pipeline {
               subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
 
               body: "Your build completed, please check: ${env.BUILD_URL}"
+              
               echo "build completed ${env.BUILD_URL}, pipeline ${currentBuild.fullDisplayName}"
          }
 
