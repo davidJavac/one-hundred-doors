@@ -21,6 +21,8 @@
         <maven.surefire.plugin>2.22.2</maven.surefire.plugin>
         <mockito.version>4.10.0</mockito.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.mvc.version>6.0.6</spring.mvc.version>
+        <jackson.databind.version>2.14.2</jackson.databind.version>
     </properties>
     <dependencies>
         <dependency>
@@ -40,6 +42,17 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.mvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
