@@ -10,11 +10,13 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Optional;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class DoorConsoleControllerTest {
 
@@ -42,6 +44,7 @@ public class DoorConsoleControllerTest {
     @Test
     public void test_when_execute_then_should_invoke_doors_executor() {
         DoorConsoleController doorConsoleController = new DoorConsoleController(doorsExecutor);
+        when(doorsExecutor.execute(any())).thenReturn(Optional.empty());
 
         doorConsoleController.execute();
 
