@@ -8,6 +8,8 @@ import org.example.core.usecase.port.dto.InputDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.example.utils.DoorUtil.buildArrayOfDoors;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -36,7 +38,8 @@ public class DoorVisitorExecutorTest {
     @Test
     public void test_when_execute_then_should_invoke_result_reporter() {
         doorsExecutor.execute(buildInputDto());
-
+        when(reporter.result(any())).thenReturn(Optional.empty());
+        
         verify(reporter, times(1)).result(any());
     }
 
