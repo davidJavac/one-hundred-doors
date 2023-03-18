@@ -7,6 +7,8 @@ import org.example.core.usecase.port.Reporter;
 import org.example.core.usecase.port.dto.InputDto;
 import org.example.core.usecase.port.dto.OutputDto;
 
+import java.util.Optional;
+
 import static org.example.utils.DoorUtil.mapToArrayOfDoorDto;
 import static org.example.utils.DoorUtil.buildListOfDoors;
 
@@ -24,8 +26,8 @@ public class DoorVisitorExecutor implements DoorsExecutor {
     }
 
     @Override
-    public void execute(InputDto inputDto) {
+    public Optional execute(InputDto inputDto) {
         Door [] visitedDoors = doorVisitor.execute(buildListOfDoors(inputDto.getDoorQuantity()));
-        reporter.result(new OutputDto(mapToArrayOfDoorDto(visitedDoors)));
+        return reporter.result(new OutputDto(mapToArrayOfDoorDto(visitedDoors)));
     }
 }
