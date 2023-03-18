@@ -4,12 +4,15 @@ import org.example.core.usecase.port.Reporter;
 import org.example.core.usecase.port.dto.DoorDto;
 import org.example.core.usecase.port.dto.OutputDto;
 
+import java.util.Optional;
+
 public class ConsoleReporter implements Reporter {
 
     @Override
-    public void result(OutputDto outputDto) {
+    public Optional result(OutputDto outputDto) {
         printHeaders();
         printContentOf(outputDto);
+        return Optional.empty();
     }
 
     private void printHeaders() {
