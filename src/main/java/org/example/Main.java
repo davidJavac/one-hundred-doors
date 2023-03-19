@@ -1,7 +1,7 @@
 package org.example;
 
 import com.google.inject.Guice;
-import org.example.adapter.controller.DoorConsoleController;
+import org.example.adapter.controller.console.DoorConsoleController;
 import org.example.config.AppModule;
 import org.example.core.usecase.port.DoorsExecutor;
 
