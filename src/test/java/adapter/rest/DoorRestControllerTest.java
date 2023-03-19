@@ -1,7 +1,7 @@
 package adapter.rest;
 
 import org.example.adapter.controller.rest.DoorRestController;
-import org.example.config.rest.RouteModule;
+import org.example.config.spring.rest.RouteModule;
 import org.example.core.usecase.port.DoorsExecutor;
 import org.springframework.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
@@ -21,7 +21,7 @@ public class DoorRestControllerTest {
     private MockMvc mockMvc;
     private DoorRestController doorRestController;
     private DoorsExecutor doorsExecutor;
-    private static final Integer QUANTITY = 100;
+    private static final String QUANTITY = "100";
 
     @BeforeEach
     public void setUp() {

@@ -1,4 +1,4 @@
-package org.example.adapter.presenter;
+package org.example.adapter.presenter.console;
 
 import org.example.core.usecase.port.Reporter;
 import org.example.core.usecase.port.dto.DoorDto;
