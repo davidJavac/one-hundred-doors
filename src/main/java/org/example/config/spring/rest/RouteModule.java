@@ -1,4 +1,4 @@
-package org.example.config.rest;
+package org.example.config.spring.rest;
 
 public class RouteModule {
 
