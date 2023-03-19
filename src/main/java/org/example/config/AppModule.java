@@ -1,7 +1,7 @@
 package org.example.config;
 
 import com.google.inject.AbstractModule;
-import org.example.adapter.presenter.ConsoleReporter;
+import org.example.adapter.presenter.console.ConsoleReporter;
 import org.example.core.usecase.DoorVisitorExecutor;
 import org.example.core.usecase.port.DoorsExecutor;
 import org.example.core.usecase.port.Reporter;
