@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -33,8 +33,9 @@ public class DoorRestControllerTest {
     @Test
     public void test_when_post_door_controller_then_should_return_ok() {
         ResponseEntity<Object> responseEntity = doorRestController.postDoorsQuantity(QUANTITY);
+
         Assertions.assertEquals(HttpStatus.ACCEPTED.value(), responseEntity.getStatusCodeValue());
-        verify()
+        verify(doorsExecutor, times(1)).execute(any());
     }
 
     @Test
