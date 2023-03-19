@@ -1,6 +1,6 @@
-package adapter;
+package adapter.console;
 
-import org.example.adapter.controller.DoorConsoleController;
+import org.example.adapter.controller.console.DoorConsoleController;
 import org.example.core.usecase.port.DoorsExecutor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;

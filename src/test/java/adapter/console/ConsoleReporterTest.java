@@ -1,4 +1,4 @@
-package adapter;
+package adapter.console;
 
 import org.example.adapter.presenter.ConsoleReporter;
 import org.example.core.usecase.port.Reporter;
