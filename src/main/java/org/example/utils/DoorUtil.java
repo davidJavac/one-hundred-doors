@@ -15,8 +15,7 @@ public class DoorUtil {
     }
 
     public static List<Door> buildListOfDoors(Integer doorsQuantity) {
-        List<Door> doors = mapToStreamDoor(rangeDoorNumbers(doorsQuantity)).toList();
-        return doors;
+        return mapToStreamDoor(rangeDoorNumbers(doorsQuantity)).toList();
     }
 
     public static DoorDto[] mapToArrayOfDoorDto(Door [] doors) {
