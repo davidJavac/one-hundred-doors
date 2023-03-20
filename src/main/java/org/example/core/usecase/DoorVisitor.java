@@ -7,11 +7,8 @@ import java.util.List;
 public class DoorVisitor {
     private Integer interval;
 
-    public DoorVisitor() {
-        this.interval = 1;
-    }
-
     public Door[] execute(List<Door> doors) {
+        this.interval = 1;
         while(interval <= doors.size()) {
             visitAllDoorsByInterval(doors);
             incrementIntervalBy(1);
