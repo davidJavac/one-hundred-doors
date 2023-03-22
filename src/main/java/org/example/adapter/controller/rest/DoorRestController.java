@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import org.example.config.spring.rest.RouteModule;
 import org.example.core.usecase.port.DoorsExecutor;
 import org.example.core.usecase.port.dto.InputDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,6 @@ public class DoorRestController {
     @PostMapping(value = RouteModule.QUANTITY)
     public ResponseEntity<Object> postDoorsQuantity(@PathVariable String quantity) {
         Optional<Object> object = doorsExecutor.execute(new InputDto(quantity));
-        return ResponseEntity.status(202).body(object.orElse(null));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(object.orElse(null));
     }
 }
