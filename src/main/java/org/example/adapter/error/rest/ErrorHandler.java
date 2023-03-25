@@ -11,7 +11,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(NonNumberDoorQuantityException.class)
     public ResponseEntity<ErrorResponse> handleNonNumberDoorQuantityException(NonNumberDoorQuantityException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }
