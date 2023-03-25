@@ -61,7 +61,7 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                sh 'pkill -f "$(pgrep -f *one-hundred-doors-practice*)"'
+                sh 'pkill -f "$(pgrep -f java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/*.jar)"'
                 sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/*.jar > /dev/null 2>&1 &'
             }
         }
