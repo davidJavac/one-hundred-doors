@@ -58,6 +58,13 @@ pipeline {
                 sh "mvn checkstyle:checkstyle"
             }
         }
+
+        stage("Deploy") {
+            steps {
+                sh 'pkill -f "/var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/.*\\.jar" || true'
+                sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/*.jar > /dev/null 2>&1 &'
+            }
+        }
     }
 
     post {
