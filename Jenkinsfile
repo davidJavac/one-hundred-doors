@@ -61,7 +61,7 @@ pipeline {
 
         stage ("Deploy") {
             steps {
-                /*script {
+                script {
                     def pid = sh(returnStdout: true, script: 'pgrep -f "/var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/.*\\.jar"').trim()
                     echo 'pid value ${pid}'
                     if (pid) {
@@ -71,7 +71,7 @@ pipeline {
                         sh 'sudo usermod -aG ${processGID} jenkins'
                         sh 'pkill ${pid}'
                     }
-                }*/
+                }
                 //sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/*.jar > /dev/null 2>&1 &'
                 sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar > /var/log/one-hundred-doors/one-hundred-doors.log 2>&1 &'
             }
