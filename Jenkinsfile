@@ -63,13 +63,13 @@ pipeline {
             steps {
                 script {
                     def pid = sh(returnStdout: true, script: 'pgrep -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar"').trim()
-                    echo 'pid value ${pid}'
+                    echo "pid value ${pid}"
                     if (pid) {
-                        def processGID = sh(returnStdout: true, script: 'ps -o group= -p ${pid}').trim()
-                        echo 'Process pid ${pid}'
-                        echo 'Process group ${processGID}'
-                        sh 'sudo usermod -aG ${processGID} jenkins'
-                        sh 'pkill ${pid}'
+                        def processGID = sh(returnStdout: true, script: "ps -o group= -p ${pid}").trim()
+                        echo "Process pid ${pid}"
+                        echo "Process group ${processGID}"
+                        sh "sudo usermod -aG ${processGID} jenkins"
+                        sh "pkill ${pid}"
                     }
                 }
                 //sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/*.jar > /dev/null 2>&1 &'
