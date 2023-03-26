@@ -63,6 +63,7 @@ pipeline {
             steps {
                 script {
                     def pid = sh(returnStdout: true, script: 'pgrep -f "/var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/.*\\.jar"').trim()
+                    echo 'pid value ${pid}'
                     if (pid) {
                         def processGID = sh(returnStdout: true, script: 'ps -o group= -p ${pid}').trim()
                         echo 'Process pid ${pid}'
