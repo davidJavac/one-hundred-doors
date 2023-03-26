@@ -5,7 +5,7 @@ pipeline {
         maven 'maven 3.9.0'
     }
     stages {
-        stage("Checkout") {
+        stage ("Checkout") {
                steps {
                   script {
                       echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
@@ -25,19 +25,19 @@ pipeline {
                }
           }
 
-        stage("Compile") {
+        stage ("Compile") {
             steps {
                 sh 'mvn compile'
             }
         }
 
-        stage("Test") {
+        stage ("Test") {
             steps {
                 sh "mvn verify"
             }
         }
 
-        stage("Code coverage") {
+        stage ("Code coverage") {
             steps {
                 sh "mvn jacoco:report"
             }
@@ -53,13 +53,13 @@ pipeline {
             }
         }
 
-        stage("Static code analysis") {
+        stage ("Static code analysis") {
             steps {
                 sh "mvn checkstyle:checkstyle"
             }
         }
 
-        stage("Deploy") {
+        stage ("Deploy") {
             steps {
                 sh 'pkill -f "/var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/.*\\.jar" || true'
                 sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/*.jar > /dev/null 2>&1 &'
