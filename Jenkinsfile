@@ -62,7 +62,7 @@ pipeline {
         stage ("Deploy") {
             steps {
                 script {
-                    def pid = sh(returnStdout: true, script: 'pgrep -f "/var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/.*\\.jar"').trim()
+                    /*def pid = sh(returnStdout: true, script: 'pgrep -f "/var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/.*\\.jar"').trim()
                     echo 'pid value ${pid}'
                     if (pid) {
                         def processGID = sh(returnStdout: true, script: 'ps -o group= -p ${pid}').trim()
@@ -70,7 +70,7 @@ pipeline {
                         echo 'Process group ${processGID}'
                         sh 'sudo usermod -aG ${processGID} jenkins'
                         sh 'pkill ${pid}'
-                    }
+                    }*/
                 }
                 sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/*.jar > /dev/null 2>&1 &'
             }
