@@ -68,7 +68,7 @@ pipeline {
                         def processGID = sh(returnStdout: true, script: "ps -o group= -p ${pid}").trim()
                         echo "Process pid ${pid}"
                         echo "Process group ${processGID}"
-                        sh "sudo usermod -aG ${processGID} jenkins"
+                        //sh "sudo usermod -aG ${processGID} jenkins"
                         sh "pkill ${pid}"
                     }
                 }
