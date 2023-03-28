@@ -65,7 +65,7 @@ pipeline {
                     def pid = sh(returnStdout: true, script: 'pgrep -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar" || true')
                     echo "pid value ${pid}"
                     if (pid) {
-                        def pídToKill = pid.trim()
+                        def pidToKill = pid.trim()
                         sh "pkill ${pidToKill}"
                     }
                 }
