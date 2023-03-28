@@ -62,7 +62,7 @@ pipeline {
         stage ("Deploy") {
             steps {
                 script {
-                    def pid = sh(returnStdout: true, script: 'pgrep -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar"')
+                    def pid = sh(returnStdout: true, script: 'pgrep -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar" || true')
                     echo "pid value ${pid}"
                     if (pid) {
                         def pídToKill = pid.trim()
