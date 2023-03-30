@@ -65,8 +65,12 @@ pipeline {
                     def pid = sh(returnStdout: true, script: 'pgrep -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar" || true')
                     echo "pid value ${pid}"
                     if (pid) {
+                        /*def processGID = sh(returnStdout: true, script: "ps -o group= -p ${pid}").trim()
+                        echo "Process pid ${pid}"
+                        echo "Process group ${processGID}"
+                        sh "sudo usermod -aG ${processGID} jenkins"*/
                         def pidToKill = pid.trim()
-                        sh "pkill ${pidToKill}"
+                        sh "kill ${pidToKill}"
                     }
                 }
                 sh 'nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar > /var/log/one-hundred-doors/one-hundred-doors.log 2>&1 &'
