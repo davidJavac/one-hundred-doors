@@ -70,7 +70,7 @@ pipeline {
                         echo "Process group ${processGID}"
                         sh "sudo usermod -aG ${processGID} jenkins"*/
                         def pidToKill = pid.trim()
-                        sh "kill ${pidToKill}"
+                        sh "sudo kill ${pidToKill}"
                     }
                 }
                 sh 'whoami'
