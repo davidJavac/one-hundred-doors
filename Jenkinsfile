@@ -61,19 +61,19 @@ pipeline {
 
         stage ("Deploy") {
             steps {
-                script {
+                /*script {
                     def pid = sh(returnStdout: true, script: 'pgrep -f "/var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar" || true')
                     echo "pid value ${pid}"
                     if (pid) {
-                        /*def processGID = sh(returnStdout: true, script: "ps -o group= -p ${pid}").trim()
-                        echo "Process pid ${pid}"
-                        echo "Process group ${processGID}"
-                        sh "sudo usermod -aG ${processGID} jenkins"*/
+                        //def processGID = sh(returnStdout: true, script: "ps -o group= -p ${pid}").trim()
+                        //echo "Process pid ${pid}"
+                        //echo "Process group ${processGID}"
+                        //sh "sudo usermod -aG ${processGID} jenkins"
                         def pidToKill = pid.trim()
                         sh "sudo kill ${pidToKill}"
                     }
-                }
-                
+                }*/
+                sh 'pkill -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar" || true'
                 sh 'whoami'
                 sh 'sudo nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar > /var/log/one-hundred-doors/one-hundred-doors.log 2>&1 &'
             }
