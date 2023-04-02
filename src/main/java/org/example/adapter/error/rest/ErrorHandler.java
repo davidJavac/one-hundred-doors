@@ -1,5 +1,6 @@
 package org.example.adapter.error.rest;
 
+import org.example.core.usecase.port.exceptions.ExceededLimitDoorQuantityException;
 import org.example.core.usecase.port.exceptions.NonNumberDoorQuantityException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,12 @@ public class ErrorHandler {
 
     @ExceptionHandler(NonNumberDoorQuantityException.class)
     public ResponseEntity<ErrorResponse> handleNonNumberDoorQuantityException(NonNumberDoorQuantityException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ExceededLimitDoorQuantityException.class)
+    public ResponseEntity<ErrorResponse> handleExceededLimitDoorQuantityException(ExceededLimitDoorQuantityException ex) {
         ErrorResponse errorResponse = new ErrorResponse(String.valueOf(HttpStatus.BAD_REQUEST.value()), ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
