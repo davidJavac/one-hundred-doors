@@ -11,12 +11,18 @@ pipeline {
                       echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
                       echo "action ${env.ACTION}, merged ${env.MERGED}"
                       def branch = ''
-                      if (env.ACTION == "closed" && env.MERGED == "true") {
-                          branch = env.BASE_BRANCH
+                      if (fileExists('.git')) {
+                          if (env.ACTION == null && env.MERGED == null) {
+                              branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                          }
+                          else if (env.ACTION == "closed" && env.MERGED == "true") {
+                              branch = env.BASE_BRANCH
+                          }
+                          else {
+                              branch = env.CHANGE_BRANCH
+                          }
                       }
-                      else {
-                          branch = env.CHANGE_BRANCH
-                      }
+
                       echo "branch variable ${branch}"
                       
                       git branch: "${branch}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
