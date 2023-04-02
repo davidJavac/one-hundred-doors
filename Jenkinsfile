@@ -8,8 +8,6 @@ pipeline {
         stage ("Checkout") {
                steps {
                   script {
-                      echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
-                      echo "action ${env.ACTION}, merged ${env.MERGED}"
                       def branch = ''
                       if (fileExists('.git')) {
                           if (env.ACTION == null && env.MERGED == null) {
@@ -21,6 +19,8 @@ pipeline {
                           else {
                               branch = env.CHANGE_BRANCH
                           }
+                          echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
+                          echo "action ${env.ACTION}, merged ${env.MERGED}"
                       }
 
                       echo "branch variable ${branch}"
