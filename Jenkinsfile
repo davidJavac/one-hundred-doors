@@ -11,7 +11,7 @@ pipeline {
                       def branch = ''
                       if (fileExists('.git')) {
                           if (env.ACTION == null && env.MERGED == null) {
-                              branch = sh(returnStdout: true, script: "git branch --contains HEAD | grep -v 'HEAD detached' | 'awk "{print ${NF})}"'").trim()
+                              branch = sh(returnStdout: true, script: "git branch --contains HEAD | grep -v 'HEAD detached' | awk "{print \$NF}"").trim()
                           }
                           else if (env.ACTION == "closed" && env.MERGED == "true") {
                               branch = env.BASE_BRANCH
