@@ -8,12 +8,10 @@ pipeline {
         stage ("Checkout") {
                steps {
                   script {
-                      echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
-                      echo "action ${env.ACTION}, merged ${env.MERGED}"
                       def branch = ''
                       if (fileExists('.git')) {
                           if (env.ACTION == null && env.MERGED == null) {
-                              branch = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                              branch = sh(returnStdout: true, script: "git branch --contains HEAD | grep -v 'HEAD detached' | awk '{print $NF}'").trim()
                           }
                           else if (env.ACTION == "closed" && env.MERGED == "true") {
                               branch = env.BASE_BRANCH
@@ -21,6 +19,8 @@ pipeline {
                           else {
                               branch = env.CHANGE_BRANCH
                           }
+                          echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
+                          echo "action ${env.ACTION}, merged ${env.MERGED}"
                       }
 
                       echo "branch variable ${branch}"
