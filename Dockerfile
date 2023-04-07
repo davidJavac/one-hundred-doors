@@ -12,6 +12,6 @@ FROM openjdk:17.0.2-jdk-slim-buster
 
 COPY --from=build /app/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar /usr/local/lib/one-hundred-doors-practice.jar
 
-EXPOSE 5050
+EXPOSE 8081
 
 ENTRYPOINT ["java", "-jar", "/usr/local/lib/one-hundred-doors-practice.jar"]
