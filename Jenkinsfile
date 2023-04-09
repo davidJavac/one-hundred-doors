@@ -72,7 +72,7 @@ pipeline {
         stage ("Docker build") {
             steps {
                 sh "whoami"
-                sh "sudo docker build -t $IMAGE ."
+                sh "sudo docker build -t $IMAGE_NAME ."
             }
         }
 
