@@ -67,7 +67,8 @@ pipeline {
 
         stage ("Docker build") {
             steps {
-                sh "docker build -t davidfravor/one_hundred_doors ."
+                sh "whoami"
+                sh "sudo docker build -t davidfravor/one_hundred_doors ."
             }
         }
 
