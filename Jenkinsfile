@@ -79,6 +79,12 @@ pipeline {
             }
         }
 
+        stage ("Deploy to staging") {
+            steps {
+                sh "docker run -d --rm -p 8081:8081 --name one-hundred-doors-container davidfravor/one_hundred_doors"
+            }
+        }
+
         /*stage ("Deploy") {
             steps {
                 sh 'sudo pkill -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar" || true'
