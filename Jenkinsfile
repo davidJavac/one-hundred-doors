@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        IMAGE_NAME = 'davidfravor/one_hundred_doors'
+        CONTAINER_NAME = 'one-hundred-doors-container'
+    }
     tools {
         jdk 'jdk 17'
         maven 'maven 3.9.0'
@@ -68,7 +72,7 @@ pipeline {
         stage ("Docker build") {
             steps {
                 sh "whoami"
-                sh "sudo docker build -t davidfravor/one_hundred_doors ."
+                sh "sudo docker build -t $IMAGE ."
             }
         }
 
@@ -81,7 +85,14 @@ pipeline {
 
         stage ("Deploy to staging") {
             steps {
-                sh "docker run -d --rm -p 8081:8081 --name one-hundred-doors-container davidfravor/one_hundred_doors"
+                sh "docker run -d --rm -p 8081:8081 --name $CONTAINER_NAME $IMAGE_NAME"
+            }
+        }
+
+        stage ("Acceptance test") {
+            steps {
+                sleep 60
+                sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
             }
         }
 
@@ -96,7 +107,7 @@ pipeline {
     post {
 
          always {
-
+              sh "docker stop $CONTAINER_NAME"
               mail to: 'david.abramovich84@gmail.com',
 
               subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
