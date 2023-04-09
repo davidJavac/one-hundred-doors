@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DOCKER_REGISTRY = "docker.io"
-        DOCKER_IMAGE_NAME = "davidfravor/one_hundred_doors"
-    }
     tools {
         jdk 'jdk 17'
         maven 'maven 3.9.0'
@@ -72,18 +68,14 @@ pipeline {
         stage ("Docker build") {
             steps {
                 sh "whoami"
-                sh "sudo docker build -t $DOCKER_IMAGE_NAME ."
+                sh "sudo docker build -t davidfravor/one_hundred_doors ."
             }
         }
 
         stage ("Docker push") {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh "docker login -u $DOCKER_USER -p $DOCKER_PASS $DOCKER_REGISTRY"
-                    sh "docker build -t $DOCKER_REGISTRY/$DOCKER_USER/$DOCKER_IMAGE_NAME ."
-                    sh "docker push $DOCKER_REGISTRY/$DOCKER_USER/$DOCKER_IMAGE_NAME"
-                    sh "docker logout $DOCKER_REGISTRY"
-                }
+                sh "docker login"
+                sh "docker push davidfravor/one_hundred_doors"
             }
         }
 
