@@ -16,18 +16,20 @@
     <properties>
         <cucumber.java.version>7.11.2</cucumber.java.version>
         <cucumber.junit.version>7.11.2</cucumber.junit.version>
+        <cucumber.spring.version>7.11.2</cucumber.spring.version>
         <google.guice.version>5.1.0</google.guice.version>
         <jacoco.version>0.8.7</jacoco.version>
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
         <junit.version>5.9.1</junit.version>
         <jupiter-engine.version>5.4.0</jupiter-engine.version>
         <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <maven.checkstyle.version>3.2.1</maven.checkstyle.version>
         <maven.jar.plugin>3.3.0</maven.jar.plugin>
         <maven.surefire.plugin>2.22.2</maven.surefire.plugin>
         <mockito.version>4.10.0</mockito.version>
+        <lombok.version>1.18.26</lombok.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson.databind.version>2.14.2</jackson.databind.version>
     </properties>
@@ -76,10 +78,27 @@
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
             <version>${cucumber.junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>${cucumber.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -103,11 +122,6 @@
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

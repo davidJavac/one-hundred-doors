@@ -7,6 +7,8 @@ public class DoorDto {
     private Integer number;
     private String state;
 
+    public DoorDto() {}
+
     public DoorDto(Door door) {
         this.number = door.number();
         this.state = door.state();
