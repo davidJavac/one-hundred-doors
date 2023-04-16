@@ -14,7 +14,7 @@ public class DoorVisitorSteps extends CucumberBootstrap {
     private RestTemplate restTemplate = new RestTemplate();
     private String doors;
     private OutputDto result;
-    
+
     @Given("^(.*) doors to visit$")
     public void i_have_doors_to_visit (String doors) {
         this.doors = doors;
