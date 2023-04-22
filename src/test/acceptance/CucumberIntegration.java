@@ -1,4 +1,4 @@
-package bdd;
+package acceptance;
 
 import io.cucumber.junit.platform.engine.Cucumber;
 

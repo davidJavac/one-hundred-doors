@@ -1,4 +1,4 @@
-package bdd;
+package acceptance;
 
 import io.cucumber.spring.CucumberContextConfiguration;
 import lombok.extern.slf4j.Slf4j;
