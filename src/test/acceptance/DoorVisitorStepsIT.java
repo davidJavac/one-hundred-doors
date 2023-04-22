@@ -1,14 +1,15 @@
-package bdd;
+package acceptance;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.core.usecase.port.dto.OutputDto;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-public class DoorVisitorSteps extends CucumberBootstrap {
+public class DoorVisitorStepsIT extends CucumberBootstrapIT {
 
     private String server = "http://localhost:8081/doors/%s";
     private RestTemplate restTemplate = new RestTemplate();

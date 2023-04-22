@@ -14,9 +14,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <codehaus.version>3.3.0</codehaus.version>
         <cucumber.java.version>7.11.2</cucumber.java.version>
         <cucumber.junit.version>7.11.2</cucumber.junit.version>
         <cucumber.spring.version>7.11.2</cucumber.spring.version>
+        <failsafe.version>2.22.2</failsafe.version>
         <google.guice.version>5.1.0</google.guice.version>
         <jacoco.version>0.8.7</jacoco.version>
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
@@ -100,6 +102,61 @@
         </dependency>
 
     </dependencies>
+    <profiles>
+        <profile>
+            <id>acceptance-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven.surefire.plugin}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven.checkstyle.version}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco.version}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${failsafe.version}</version>
+                        <configuration>
+                            <testSourceDirectory>src/test/acceptance</testSourceDirectory>
+                            <testSourceDirectory>src/test/resources</testSourceDirectory>
+                            <includes>
+                                <include>**/*IT.java</include>
+                                <include>**/*.feature</include>
+                            </includes>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -113,11 +170,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven.jar.plugin}</version>
                 <configuration>
@@ -126,6 +178,35 @@
                             <mainClass>org.example.Application</mainClass>
                         </manifest>
                     </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${codehaus.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-test-source</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/test/unit</source>
+                                <source>src/test/acceptance</source>
+                                <source>src/test/resources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin}</version>
+                <configuration>
+                    <testSourceDirectory>src/test/unit</testSourceDirectory>
                 </configuration>
             </plugin>
             <plugin>
