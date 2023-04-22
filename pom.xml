@@ -18,7 +18,7 @@
         <cucumber.java.version>7.11.2</cucumber.java.version>
         <cucumber.junit.version>7.11.2</cucumber.junit.version>
         <cucumber.spring.version>7.11.2</cucumber.spring.version>
-        <failsafe.version>3.0.0</failsafe.version>
+        <failsafe.version>2.22.2</failsafe.version>
         <google.guice.version>5.1.0</google.guice.version>
         <jacoco.version>0.8.7</jacoco.version>
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
@@ -134,7 +134,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.22.2</version>
+                        <version>${failsafe.version}</version>
                         <configuration>
                             <testSourceDirectory>src/test/acceptance</testSourceDirectory>
                             <testSourceDirectory>src/test/resources</testSourceDirectory>
@@ -183,7 +183,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>${codehaus.version}</version>
                 <executions>
                     <execution>
                         <id>add-test-source</id>
@@ -207,14 +207,6 @@
                 <version>${maven.surefire.plugin}</version>
                 <configuration>
                     <testSourceDirectory>src/test/unit</testSourceDirectory>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <skip>true</skip>
                 </configuration>
             </plugin>
             <plugin>
