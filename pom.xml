@@ -116,7 +116,22 @@
                         </configuration>
                     </plugin>
                     <plugin>
-                        <!-- to run directly: mvn failsafe:integration-test -P acceptance-test -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven.checkstyle.version}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco.version}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>2.22.2</version>
@@ -124,7 +139,7 @@
                             <testSourceDirectory>src/test/acceptance</testSourceDirectory>
                             <testSourceDirectory>src/test/resources</testSourceDirectory>
                             <includes>
-                                <include>**/*.java</include>
+                                <include>**/*IT.java</include>
                                 <include>**/*.feature</include>
                             </includes>
                         </configuration>
@@ -195,21 +210,12 @@
                 </configuration>
             </plugin>
             <plugin>
-                <!-- to run directly: mvn failsafe:integration-test -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <testSourceDirectory>test/acceptance</testSourceDirectory>
+                    <skip>true</skip>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

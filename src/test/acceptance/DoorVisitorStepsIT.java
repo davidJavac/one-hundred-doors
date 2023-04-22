@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-public class DoorVisitorStepsIT extends CucumberBootstrap {
+public class DoorVisitorStepsIT extends CucumberBootstrapIT {
 
     private String server = "http://localhost:8081/doors/%s";
     private RestTemplate restTemplate = new RestTemplate();

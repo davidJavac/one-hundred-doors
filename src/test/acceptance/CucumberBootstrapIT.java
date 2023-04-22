@@ -10,7 +10,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 @Slf4j
 @CucumberContextConfiguration
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CucumberBootstrap {
+public class CucumberBootstrapIT {
 
     @Autowired
     protected TestRestTemplate testRestTemplate;
