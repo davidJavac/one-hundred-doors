@@ -1,10 +1,16 @@
 Feature: DoorVisitor acceptance test
-  Scenario: Doors to visit
-    Given 1 doors to visit
+  Scenario: One Door to visit
+    Given 1 door to visit
     When the visit is performed
     Then I receive a door with number 1 and status OPEN
 
   Scenario: Doors to visit
-    Given 2 doors to visit
-    When the visit is performed
-    Then I receive 2 doors: one with number 1 and status OPEN, and the other with number 2 and status CLOSED
+    Given an amount of doors to visit as table
+      | 1     |
+      | 2     |
+    When the visit is performed to multiple doors
+    Then doors should have the correct number and status
+      | doors  | number | status |
+      | 1      | 1      | OPEN   |
+      | 2      | 1      | OPEN   |
+      | 2      | 2      | CLOSED |
