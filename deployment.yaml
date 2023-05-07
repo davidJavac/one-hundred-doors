@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: one-hundred-doors-deployment
+  labels:
+    app: one-hundred-doors
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 0
+  selector:
+    matchLabels:
+      app: one-hundred-doors
+  template:
+    metadata:
+      labels:
+        app: one-hundred-doors
+    spec:
+      containers:
+        - name: one-hundred-doors
+          image: davidfravor/one_hundred_doors
+          ports:
+            - containerPort: 8081
+          readinessProbe:
+            httpPost:
+              path: /doors/100
+              port: 8081
