@@ -98,6 +98,7 @@ pipeline {
 
         stage ("Deploy") {
             steps {
+                sh "kubectl config use-context kind-kind"
                 sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl apply -f service.yaml'
             }
