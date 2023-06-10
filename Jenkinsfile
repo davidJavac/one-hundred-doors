@@ -98,7 +98,9 @@ pipeline {
 
         stage ("Deploy") {
             steps {
-                echo "running deploy"
+                sh "kubectl config get-contexts"
+                sh "kubectl config current-context"
+                sh "kubectl cluster-info"
                 sh "kubectl config use-context kind-kind"
                 sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl apply -f service.yaml'
