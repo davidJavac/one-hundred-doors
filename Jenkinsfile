@@ -83,6 +83,12 @@ pipeline {
             }
         }
 
+        stage('Copy kube/config') {
+            steps {
+                sh 'cp ${HOME}/.kube/config ${WORKSPACE}/kube/config'
+            }
+        }
+
         stage ("Deploy to staging") {
             steps {
                 sh "docker run -d --rm -p 8081:8081 --name $CONTAINER_NAME $IMAGE_NAME"
