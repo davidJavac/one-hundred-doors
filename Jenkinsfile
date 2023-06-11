@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     environment {
         IMAGE_NAME = 'davidfravor/one_hundred_doors'
         CONTAINER_NAME = 'one-hundred-doors-container'
@@ -10,13 +10,9 @@ pipeline {
     }
     stages {
         stage('Apply Kubernetes files') {
-            steps {
-                script {
-                    node {
-                        withKubeConfig([credentialsId: 'kind-kind', serverUrl: 'https://127.0.0.1:40801']) {
-                            sh 'kubectl apply -f /home/ec2-user/.kube/config'
-                        }
-                    }
+            node {
+                withKubeConfig([credentialsId: 'user1', serverUrl: 'https://api.k8s.my-company.com']) {
+                  sh 'kubectl apply -f my-kubernetes-directory'
                 }
             }
         }
