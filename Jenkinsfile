@@ -1,10 +1,12 @@
 pipeline {
-    node {
-      stage('Apply Kubernetes files') {
-        withKubeConfig([credentialsId: 'kind-kind', serverUrl: 'https://127.0.0.1:40801']) {
-          sh 'kubectl apply -f /home/ec2-user/.kube/config'
+    agent {
+        node {
+          stage('Apply Kubernetes files') {
+            withKubeConfig([credentialsId: 'kind-kind', serverUrl: 'https://127.0.0.1:40801']) {
+              sh 'kubectl apply -f /home/ec2-user/.kube/config'
+            }
+          }
         }
-      }
     }
     environment {
         IMAGE_NAME = 'davidfravor/one_hundred_doors'
