@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            // Specify the label of the Kubernetes pod template to use
+            label 'slave'
+        }
+    }
     environment {
         IMAGE_NAME = 'davidfravor/one_hundred_doors'
         CONTAINER_NAME = 'one-hundred-doors-container'
@@ -83,7 +88,7 @@ pipeline {
             }
         }
 
-       
+
         stage ("Deploy to staging") {
             steps {
                 sh "docker run -d --rm -p 8081:8081 --name $CONTAINER_NAME $IMAGE_NAME"
@@ -99,6 +104,7 @@ pipeline {
 
         stage ("Deploy") {
             steps {
+                sh "kubectl cluster-info"
                 sh "kubectl config get-contexts"
                 sh "kubectl config current-context"
                 sh "kubectl cluster-info"
