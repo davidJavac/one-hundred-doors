@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-            // Specify the label of the Kubernetes pod template to use
-            label 'slave'
-        }
-    }
+    agent any
     environment {
         IMAGE_NAME = 'davidfravor/one_hundred_doors'
         CONTAINER_NAME = 'one-hundred-doors-container'
