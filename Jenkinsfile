@@ -83,7 +83,7 @@ pipeline {
             }
         }
 
-       
+
         stage ("Deploy to staging") {
             steps {
                 sh "docker run -d --rm -p 8081:8081 --name $CONTAINER_NAME $IMAGE_NAME"
@@ -99,6 +99,7 @@ pipeline {
 
         stage ("Deploy") {
             steps {
+                sh "kubectl cluster-info"
                 sh "kubectl config get-contexts"
                 sh "kubectl config current-context"
                 sh "kubectl cluster-info"
