@@ -100,10 +100,10 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    
+
                     dir('target') {
                         // Execute the JAR file in the background
-                        sh "nohup java -jar one-hundred-doors-practice-1.0-SNAPSHOT.jar > output.log 2>&1 &"
+                        sh "nohup java -jar one-hundred-doors-practice-1.0-SNAPSHOT.jar &"
                     }
                 }
             }
