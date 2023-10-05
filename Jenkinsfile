@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     environment {
         IMAGE_NAME = 'davidfravor/one_hundred_doors'
         CONTAINER_NAME = 'one-hundred-doors-container'
@@ -8,32 +8,32 @@ pipeline {
         jdk 'jdk 17'
         maven 'maven 3.9.0'
     }
-    node {
+
         stage ("Checkout") {
-                       steps {
-                          script {
-                              def branch = ''
-                              if (fileExists('.git')) {
-                                  if (env.ACTION == null && env.MERGED == null) {
-                                      branch = sh(returnStdout: true, script: "git branch --contains HEAD | grep -v 'HEAD detached' | awk '{print \$NF}'").trim()
-                                  }
-                                  else if (env.ACTION == "closed" && env.MERGED == "true") {
-                                      branch = env.BASE_BRANCH
-                                  }
-                                  else {
-                                      branch = env.CHANGE_BRANCH
-                                  }
-                                  echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
-                                  echo "action ${env.ACTION}, merged ${env.MERGED}"
+                   steps {
+                      script {
+                          def branch = ''
+                          if (fileExists('.git')) {
+                              if (env.ACTION == null && env.MERGED == null) {
+                                  branch = sh(returnStdout: true, script: "git branch --contains HEAD | grep -v 'HEAD detached' | awk '{print \$NF}'").trim()
                               }
-
-                              echo "branch variable ${branch}"
-
-                              git branch: "${branch}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
+                              else if (env.ACTION == "closed" && env.MERGED == "true") {
+                                  branch = env.BASE_BRANCH
+                              }
+                              else {
+                                  branch = env.CHANGE_BRANCH
+                              }
+                              echo "base branch ${env.BASE_BRANCH}, change branch ${env.CHANGE_BRANCH}"
+                              echo "action ${env.ACTION}, merged ${env.MERGED}"
                           }
 
-                       }
-                  }
+                          echo "branch variable ${branch}"
+
+                          git branch: "${branch}", url: 'https://github.com/davidJavac/one-hundred-doors.git'
+                      }
+
+                   }
+              }
 
                 stage ("Compile") {
                     steps {
@@ -104,8 +104,6 @@ pipeline {
                         }
                     }
                 }
-    }
-
 
     post {
 
