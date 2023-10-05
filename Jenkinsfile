@@ -9,13 +9,6 @@ pipeline {
         maven 'maven 3.9.0'
     }
     node {
-        stage('Apply Kubernetes files') {
-            steps {
-                withKubeConfig([credentialsId: 'kind-kind', serverUrl: 'https://127.0.0.1:40801']) {
-                  sh 'kubectl apply -f /home/ec2-user/.kube/config'
-                }
-            }
-        }
         stage ("Checkout") {
                        steps {
                           script {
@@ -106,13 +99,9 @@ pipeline {
 
                 stage ("Deploy") {
                     steps {
-                        sh "kubectl cluster-info"
-                        sh "kubectl config get-contexts"
-                        sh "kubectl config current-context"
-                        sh "kubectl cluster-info"
-                        sh "kubectl config use-context kind-kind"
-                        sh 'kubectl apply -f deployment.yaml'
-                        sh 'kubectl apply -f service.yaml'
+                        script {
+                            sh "nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar &"
+                        }
                     }
                 }
     }
