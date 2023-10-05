@@ -102,7 +102,6 @@ pipeline {
                 script {
 
                     dir('target') {
-                        // Execute the JAR file in the background
                         sh "nohup java -jar one-hundred-doors-practice-1.0-SNAPSHOT.jar &"
                     }
                 }
