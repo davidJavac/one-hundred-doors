@@ -7,8 +7,8 @@ pipeline {
     }
 
     tools {
-        jdk 'jdk 17'  // Use 'jdk-17' instead of 'jdk 17' for tool name
-        maven 'maven 3.9.0'  // Use 'maven-3.9.0' instead of 'maven 3.9.0' for tool name
+        jdk 'jdk 17'
+        maven 'maven 3.9.0'
     }
 
     stages {
@@ -41,6 +41,7 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+
 
         stage("Test") {
             steps {
@@ -100,10 +101,8 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    // Navigate to the directory containing the JAR file
                     dir('target') {
-                        // Execute the JAR file in the background
-                        sh "nohup java -jar one-hundred-doors-practice-1.0-SNAPSHOT.jar > output.log 2>&1 &"
+                        sh "nohup java -jar one-hundred-doors-practice-1.0-SNAPSHOT.jar &"
                     }
                 }
             }
@@ -113,10 +112,10 @@ pipeline {
     post {
         always {
             sh "docker stop $CONTAINER_NAME"
-            mail to: 'david.abramovich84@gmail.com',
+            /*mail to: 'david.abramovich84@gmail.com',
             subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
             body: "Your build completed, please check: ${env.BUILD_URL}"
-            echo "build completed ${env.BUILD_URL}, pipeline ${currentBuild.fullDisplayName}"
+            echo "build completed ${env.BUILD_URL}, pipeline ${currentBuild.fullDisplayName}"*/
         }
     }
 }
