@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools {
-        jdk 'jdk 17'  // Use 'jdk-17' instead of 'jdk 17' for tool name
+        jdk 'jdk 17'
         maven 'maven 3.9.0'  // Use 'maven-3.9.0' instead of 'maven 3.9.0' for tool name
     }
 
