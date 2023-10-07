@@ -101,10 +101,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    dir('target') {
-                    
-                        sh "nohup java -jar one-hundred-doors-practice-1.0-SNAPSHOT.jar &"
-                    }
+                    sh "nohup java -jar ./target/one-hundred-doors-practice-1.0-SNAPSHOT.jar &"
                 }
             }
         }
