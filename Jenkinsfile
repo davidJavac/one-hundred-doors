@@ -101,7 +101,15 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    sh "nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar &"
+                   
+                    def jarFileName = "one-hundred-doors-practice-1.0-SNAPSHOT.jar"
+                    def processName = "java -jar " + jarFileName
+
+                    // Kill any running process associated with the JAR file
+                    sh "pkill -f '${processName}' || true"
+
+                    // Start a new process
+                    sh "nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/${jarFileName} > output.log 2>&1 &"
                 }
             }
         }
