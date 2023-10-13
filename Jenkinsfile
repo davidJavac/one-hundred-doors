@@ -101,11 +101,10 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                   
+
                     def jarFileName = "one-hundred-doors-practice-1.0-SNAPSHOT.jar"
                     def processName = "java -jar " + jarFileName
 
-                    // Kill any running process associated with the JAR file
                     sh "pkill -f '${processName}' || true"
 
                     // Start a new process
