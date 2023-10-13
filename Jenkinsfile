@@ -101,7 +101,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 script {
-                    // Define the JAR file name and its associated process name
+                   
                     def jarFileName = "one-hundred-doors-practice-1.0-SNAPSHOT.jar"
                     def processName = "java -jar " + jarFileName
 
