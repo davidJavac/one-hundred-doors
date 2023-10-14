@@ -102,7 +102,6 @@ pipeline {
             steps {
                 script {
                     sh 'sudo pkill -f "one-hundred-doors-practice-1.0-SNAPSHOT.jar" || true'
-                    
                     sh "sudo nohup java -jar /var/lib/jenkins/workspace/one-hundred-doors-pipeline/target/one-hundred-doors-practice-1.0-SNAPSHOT.jar > output.log 2>&1 &"
                 }
             }
