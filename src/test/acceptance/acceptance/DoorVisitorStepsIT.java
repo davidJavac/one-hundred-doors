@@ -10,9 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +41,7 @@ public class DoorVisitorStepsIT extends CucumberBootstrapIT {
     public void i_receive_one_door_with_number_and_status_as_a_result (String expectedDoors, String expectedState) {
         System.out.println("then running");
         Assertions.assertEquals(expectedDoors, result.getDoors()[0].getNumber().toString());
-        Assertions.assertEquals(expectedState, result.getDoors()[0].getState());
+        Assertions.assertEquals(expectedState, result.getDoors()[0].getDoorState());
     }
 
     @Given("^an amount of doors to visit as table$")
@@ -74,7 +72,7 @@ public class DoorVisitorStepsIT extends CucumberBootstrapIT {
                 for (Map<String, String> row : rows) {
                     int number = Integer.parseInt(row.get("number"));
                     String status = row.get("status");
-                    if (doorDto.getNumber().equals(number) && doorDto.getState().equals(status)) {
+                    if (doorDto.getNumber().equals(number) && doorDto.getDoorState().equals(status)) {
                         resultIsInRule = Boolean.TRUE;
                     }
                 }
