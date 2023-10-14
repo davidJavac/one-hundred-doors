@@ -91,7 +91,7 @@ pipeline {
                     def portInUse = sh(script: "sudo lsof -i :8081", returnStatus: true, returnStdout: true)
                     if (portInUse == 0) {
                         echo "Port 8081 is already in use. Unable to proceed."
-                        sh "sudo kill -9 \$(lsof -t -i :8081)"
+                        sh "sudo kill -9 \$(sudo lsof -t -i :8081)"
                     }
                 }
 
