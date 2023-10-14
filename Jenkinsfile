@@ -87,6 +87,13 @@ pipeline {
 
         stage("Deploy to staging") {
             steps {
+                script {
+                    def portInUse = sh(script: "lsof -i :8081", returnStatus: true, returnStdout: true)
+                    if (portInUse == 0) {
+                        sh "kill -9 \$(lsof -t -i :8081)"
+                    }
+                }
+
                 sh "docker run -d --rm -p 8081:8081 --name $CONTAINER_NAME $IMAGE_NAME"
             }
         }
