@@ -40,7 +40,7 @@ public class DoorVisitorStepsIT extends CucumberBootstrapIT {
     @Then("^I receive a door with number (.*) and status (.*)$")
     public void i_receive_one_door_with_number_and_status_as_a_result (String expectedDoors, String expectedState) {
         System.out.println("then running");
-        Assertions.assertEquals(expectedDoors, result.getDoors()[0].getNumber().toString());
+        Assertions.assertEquals(expectedDoors, result.getDoors()[0].getNumberOfDoor().toString());
         Assertions.assertEquals(expectedState, result.getDoors()[0].getStatus());
     }
 
@@ -72,7 +72,7 @@ public class DoorVisitorStepsIT extends CucumberBootstrapIT {
                 for (Map<String, String> row : rows) {
                     int number = Integer.parseInt(row.get("number"));
                     String status = row.get("status");
-                    if (doorDto.getNumber().equals(number) && doorDto.getStatus().equals(status)) {
+                    if (doorDto.getNumberOfDoor().equals(number) && doorDto.getStatus().equals(status)) {
                         resultIsInRule = Boolean.TRUE;
                     }
                 }
