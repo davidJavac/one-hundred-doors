@@ -4,18 +4,18 @@ import org.example.core.entity.Door;
 
 public class DoorDto {
 
-    private Integer number;
+    private Integer numberOrDoor;
     private String state;
 
     public DoorDto() {}
 
     public DoorDto(Door door) {
-        this.number = door.number();
+        this.numberOrDoor = door.number();
         this.state = door.state();
     }
 
-    public Integer getNumber() {
-        return this.number;
+    public Integer getNumberOrDoor() {
+        return this.numberOrDoor;
     }
 
     public String getState() {
