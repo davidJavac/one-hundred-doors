@@ -4,6 +4,8 @@ public class OutputDto {
 
     private DoorDto doors [];
 
+    public OutputDto() {}
+
     public OutputDto(DoorDto doors []) {
         this.doors = doors;
     }

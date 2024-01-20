@@ -1,0 +1,4 @@
+doors,number,status
+1,1,OPEN
+2,1,OPEN
+2,2,CLOSED

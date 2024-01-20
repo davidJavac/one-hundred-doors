@@ -1,4 +1,4 @@
-package org.example.adapter.controller;
+package org.example.adapter.controller.console;
 
 import com.google.inject.Inject;
 import org.example.core.usecase.port.DoorsExecutor;
