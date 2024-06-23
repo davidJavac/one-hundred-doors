@@ -5,7 +5,7 @@ door_array=$(curl -s -X POST http://localhost:8081/doors/1 | jq -r '.doors')
 expected_response='[
   {
     "number": 1,
-    "doorState": "OPEN"
+    "state": "OPEN"
   }
 ]'
 

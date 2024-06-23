@@ -5,20 +5,20 @@ import org.example.core.entity.Door;
 public class DoorDto {
 
     private Integer number;
-    private String doorState;
+    private String state;
 
     public DoorDto() {}
 
     public DoorDto(Door door) {
         this.number = door.number();
-        this.doorState = door.state();
+        this.state = door.state();
     }
 
     public Integer getNumber() {
         return this.number;
     }
 
-    public String getDoorState() {
-        return this.doorState;
+    public String getState() {
+        return this.state;
     }
 }
