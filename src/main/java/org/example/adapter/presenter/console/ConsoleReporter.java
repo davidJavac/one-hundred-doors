@@ -21,7 +21,7 @@ public class ConsoleReporter implements Reporter {
 
     private void printContentOf(OutputDto outputDto) {
         for(DoorDto door : outputDto.getDoors()) {
-            System.out.println(door.getNumber() + " " + door.getDoorState());
+            System.out.println(door.getNumber() + " " + door.getDoorStatus());
         }
     }
 }

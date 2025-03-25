@@ -41,7 +41,7 @@ public class DoorVisitorStepsIT extends CucumberBootstrapIT {
     public void i_receive_one_door_with_number_and_status_as_a_result (String expectedDoors, String expectedState) {
         System.out.println("then running");
         Assertions.assertEquals(expectedDoors, result.getDoors()[0].getNumber().toString());
-        Assertions.assertEquals(expectedState, result.getDoors()[0].getDoorState());
+        Assertions.assertEquals(expectedState, result.getDoors()[0].getDoorStatus());
     }
 
     @Given("^an amount of doors to visit as table$")
@@ -72,7 +72,7 @@ public class DoorVisitorStepsIT extends CucumberBootstrapIT {
                 for (Map<String, String> row : rows) {
                     int number = Integer.parseInt(row.get("number"));
                     String status = row.get("status");
-                    if (doorDto.getNumber().equals(number) && doorDto.getDoorState().equals(status)) {
+                    if (doorDto.getNumber().equals(number) && doorDto.getDoorStatus().equals(status)) {
                         resultIsInRule = Boolean.TRUE;
                     }
                 }
